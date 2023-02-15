@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -22,6 +24,14 @@ class _HomepageState extends State<Homepage> {
   }
 }
 
+class BreadCrumbProvider extends ChangeNotifier {
+  final List<BreadCrumb> _items = [];
+  UnmodifiableListView<BreadCrumb> get ietm=> UnmodifiableListView(_items);
+
+  
+
+}
+
 class BreadCrumb {
   bool isActive;
   final String name;
@@ -35,11 +45,10 @@ class BreadCrumb {
 
   @override
   bool operator ==(covariant BreadCrumb other) => uuid == other.uuid;
-  
+
   @override
   // TODO: implement hashCode
   int get hashCode => uuid.hashCode;
 
-  String get title=> name + (isActive? '>' :''  );
-  
+  String get title => name + (isActive ? '>' : '');
 }
